@@ -4,7 +4,7 @@ else if [ $(command -v wget | grep -c "wget") -lt 1 -o $(command -v nginx | grep
 then yum update || apt update
 yes | yum upgrade || yes | apt upgrade
 yum update || apt update
-yum install wget nginx -y || apt install wget nginx -y
+##yum install wget nginx -y || apt install wget nginx -y
 fi
 spip=$(curl -s ifconfig.me)
 spport="443"
@@ -23,7 +23,7 @@ echo -n "vmess://$config" | base64 -w 0 > /www/server/nginx/html/809
 [ $(ps -A | grep "nginx" | wc -l) -lt 1 ] && nginx
 if [ $(crontab -l | grep "lt809ml/sub" | wc -l) -lt 1 ]
 then crontab -l > crontablist
-echo "0 0-23/3 * * * bash <(curl -s https://raw.githubusercontent.com/shoujiyanxishe/shjb/main/lt809ml/sub)" >> crontablist
+echo "0 0-23/3 * * * bash <(curl -s https://raw.githubusercontent.com/lynnhou/shjb/main/lt809ml/sub)" >> crontablist
 crontab crontablist
 rm -rf crontablist
 fi
